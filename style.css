@@ -1,0 +1,437 @@
+/* ==========================================================================
+   1. CẤU HÌNH BIẾN MÀU & THÔNG SỐ CHỦ ĐẠO (CSS VARIABLES)
+   ========================================================================== */
+:root {
+    /* Tông màu thể thao: Đen carbon kết hợp Neon Cyan & Lime */
+    --color-bg-primary: #0a0d14;         /* Nền đen tuyền thể thao */
+    --color-bg-secondary: #121824;       /* Nền khối card/nội dung */
+    --color-bg-card: rgba(22, 30, 46, 0.7); /* Nền kính mờ (Glassmorphism) */
+    
+    --color-accent: #00f2fe;             /* Xanh cyan neon rực rỡ */
+    --color-accent-green: #00ff87;       /* Xanh lá neon thể thao */
+    --color-accent-gradient: linear-gradient(135deg, #00ff87 0%, #00f2fe 100%);
+    
+    --color-text-main: #f8fafc;          /* Trắng sáng chính */
+    --color-text-muted: #94a3b8;         /* Xám sáng phụ */
+    --color-border: rgba(255, 255, 255, 0.08); /* Viền mờ tinh tế */
+    --color-border-hover: rgba(0, 242, 254, 0.4);
+    
+    /* Font chữ */
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+    
+    /* Hiệu ứng bóng đổ (Glow & Shadow) */
+    --glow-cyan: 0 0 25px rgba(0, 242, 254, 0.35);
+    --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   2. THIẾT LẬP CƠ BẢN (RESET & BASE)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   3. KHUNG CHÍNH CỦA ABOUT SECTION
+   ========================================================================== */
+.about-section {
+    position: relative;
+    padding: 100px 20px;
+    background-color: var(--color-bg-primary);
+    /* Họa tiết đường kẻ sân bóng trừu tượng làm mờ phía sau */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 135, 0.04) 0%, transparent 40%);
+    overflow: hidden;
+}
+
+/* Hiệu ứng đốm sáng mờ ảo diệu (Ambient Glow) */
+.bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bg-glow-1 {
+    width: 360px;
+    height: 360px;
+    background: rgba(0, 242, 254, 0.12);
+    top: 5%;
+    left: -100px;
+}
+
+.bg-glow-2 {
+    width: 320px;
+    height: 320px;
+    background: rgba(0, 255, 135, 0.1);
+    bottom: 5%;
+    right: -80px;
+}
+
+/* Container giới hạn độ rộng */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   4. CỘT HÌNH ẢNH & BADGE TRẢI NGHIỆM (VISUAL COLUMN)
+   ========================================================================== */
+.about-visual {
+    position: relative;
+    padding: 20px;
+}
+
+/* Khung bọc ảnh với đường viền góc cạnh thể thao */
+.image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--color-border);
+    transform: rotate(-1.5deg);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.image-wrapper:hover {
+    transform: rotate(0deg) scale(1.02);
+    border-color: var(--color-border-hover);
+}
+
+.main-image {
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.image-wrapper:hover .main-image {
+    transform: scale(1.05);
+}
+
+/* Lớp phủ chuyển màu trên ảnh */
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(10, 13, 20, 0.85) 100%);
+    pointer-events: none;
+}
+
+/* Các thẻ nổi (Floating Badges) tạo chiều sâu 3D */
+.floating-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    background: rgba(18, 24, 36, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    z-index: 3;
+    animation: floatAnimation 4s ease-in-out infinite alternate;
+}
+
+.badge-top {
+    top: 40px;
+    left: -15px;
+}
+
+.badge-bottom {
+    bottom: 35px;
+    right: -10px;
+    animation-delay: 2s;
+}
+
+.badge-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--color-accent-gradient);
+    color: #071013;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.badge-info strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.badge-info span {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
+}
+
+/* ==========================================================================
+   5. CỘT NỘI DUNG GIỚI THIỆU (CONTENT COLUMN)
+   ========================================================================== */
+.about-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tag nhãn nhỏ phía trên tiêu đề */
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+}
+
+.tag-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-accent);
+}
+
+/* Tiêu đề shop */
+.about-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.highlight-text {
+    background: var(--color-accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text; /* <-- Thêm đúng dòng này */
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+/* Slogan */
+.about-slogan {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-style: italic;
+    position: relative;
+    padding-left: 16px;
+    border-left: 3px solid var(--color-accent-green);
+}
+
+/* Mô tả ngắn */
+.about-desc {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+    text-align: justify;
+}
+
+/* ==========================================================================
+   6. DANH SÁCH 3 ƯU ĐIỂM NỔI BẬT (FEATURE CARDS)
+   ========================================================================== */
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 16px 20px;
+    background: var(--color-bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: var(--color-border-hover);
+    transform: translateX(8px);
+    box-shadow: 0 10px 25px -10px rgba(0, 242, 254, 0.15);
+}
+
+.feature-icon {
+    font-size: 1.4rem;
+    color: var(--color-accent);
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.feature-text h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.feature-text p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   7. CÁC NÚT BẤM KÊU GỌI HÀNH ĐỘNG (CTA BUTTONS)
+   ========================================================================== */
+.about-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+/* Nút chính (Gradient neon nổi bật) */
+.btn-primary {
+    background: var(--color-accent-gradient);
+    color: #071013;
+    box-shadow: 0 6px 20px rgba(0, 255, 135, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 242, 254, 0.5);
+}
+
+/* Nút phụ (Viền mảnh hiện đại) */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-text-main);
+    transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   8. TƯƠNG THÍCH MỌI MÀN HÌNH (RESPONSIVE)
+   ========================================================================== */
+
+/* Tablet (Màn hình dưới 1024px) */
+@media (max-width: 1024px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .about-visual {
+        max-width: 550px;
+        margin: 0 auto;
+    }
+
+    .about-title {
+        font-size: 2.6rem;
+    }
+}
+
+/* Điện thoại di động (Màn hình dưới 768px) */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 16px;
+    }
+
+    .about-visual {
+        padding: 10px;
+    }
+
+    .main-image {
+        height: 380px;
+    }
+
+    .about-title {
+        font-size: 2.2rem;
+    }
+
+    .about-slogan {
+        font-size: 1.1rem;
+    }
+
+    /* Đưa các badge nổi vào gọn gàng trên mobile */
+    .floating-badge {
+        padding: 10px 14px;
+        gap: 10px;
+    }
+
+    .badge-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .badge-top {
+        top: 20px;
+        left: 0;
+    }
+
+    .badge-bottom {
+        bottom: 20px;
+        right: 0;
+    }
+
+    /* Nút bấm trải rộng toàn màn hình trên điện thoại */
+    .about-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
