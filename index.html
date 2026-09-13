@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOCCER BOOTS ⚽ | Giày Bóng Đá Chính Hãng</title>
+    <!-- Google Fonts: Inter & Montserrat for athletic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== HEADER & NAVBAR ==================== -->
+    <header class="site-header">
+        <div class="header-container">
+            <!-- 1. Logo Thương Hiệu -->
+            <a href="#" class="logo">
+                <span class="logo-text">SOCCER BOOTS</span>
+                <span class="logo-icon">⚽</span>
+            </a>
+
+            <!-- 2. Thanh Điều Hướng Menu Trung Tâm -->
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tf" class="nav-link">Giày Sân Cỏ Nhân Tạo (TF)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#fg" class="nav-link">Giày Sân Tự Nhiên (FG)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#ic" class="nav-link">Giày Futsal (IC)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#accessories" class="nav-link">Phụ Kiện Cầu Thủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#promotions" class="nav-link nav-link--sale">
+                            Khuyến Mãi
+                            <span class="sale-badge">HOT</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 3. Khu Vực Tiện Ích Góc Phải -->
+            <div class="header-actions">
+                <!-- Thanh tìm kiếm bo góc tròn có icon kính lúp -->
+                <div class="search-box">
+                    <button class="search-btn" aria-label="Tìm kiếm">
+                        <svg class="icon search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <input type="text" class="search-input" placeholder="Tìm giày Mercurial, Predator..." autocomplete="off">
+                </div>
+
+                <!-- Icon giỏ hàng có badge số lượng "2" -->
+                <a href="#cart" class="cart-btn" aria-label="Giỏ hàng có 2 sản phẩm">
+                    <div class="cart-icon-wrapper">
+                        <svg class="icon cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-2z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span class="cart-badge">2</span>
+                    </div>
+                </a>
+
+                <!-- Nút Đăng nhập / Đăng ký -->
+                <a href="#auth" class="auth-btn">
+                    <svg class="icon user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Đăng nhập / Đăng ký</span>
+                </a>
+
+                <!-- Nút Hamburger cho giao diện Mobile -->
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Mở menu điều hướng">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO BANNER ==================== -->
+    <section class="hero-banner">
+        <!-- Hiệu ứng ánh sáng nền thể thao (Aura glow) -->
+        <div class="hero-glow-effect"></div>
+        <div class="hero-grid-pattern"></div>
+
+        <div class="hero-container">
+            <!-- Cột trái: Nội dung Hero -->
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span class="pulse-dot"></span>
+                    <span>BST MỚI 2025 • ĐỘT PHÁ TỐC ĐỘ</span>
+                </div>
+
+                <h1 class="hero-title">
+                    BỨT TỐC ĐỈNH CAO<br>
+                    <span class="hero-title-accent">LÀM CHỦ MỌI MẶT SÂN</span>
+                </h1>
+
+                <p class="hero-description">
+                    Chinh phục mọi trận cầu rực lửa với những thế hệ giày bóng đá mới nhất. 
+                    Được tích hợp công nghệ đế đinh ma sát tối ưu, upper siêu nhẹ mang lại cảm giác bóng chân thực và khả năng bứt tốc không giới hạn.
+                </p>
+
+                <!-- Nút kêu gọi hành động (CTA) -->
+                <div class="hero-cta-group">
+                    <a href="#shop-now" class="btn btn--primary">
+                        <span>SĂN NGAY BÂY GIỜ</span>
+                        <svg class="icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#promotions" class="btn btn--outline">
+                        <svg class="icon fire-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 23c6.075 0 11-4.925 11-11 0-4.08-2.22-7.64-5.5-9.58a1 1 0 0 0-1.42 1.13c.48 2.08.13 3.65-.63 4.79-.82 1.23-2.18 1.96-3.87 2.12a.997.997 0 0 0-.89.8c-.4 2-.11 3.84.77 5.15.53.79 1.26 1.34 2.14 1.63a1 1 0 0 1-.64 1.88C9.5 20.44 7 17.5 7 14c0-2.3 1.05-4.43 2.87-5.91a1 1 0 0 0-.25-1.63C7.26 5.3 5 7.89 5 11c0 6.627 3.134 12 7 12z"/>
+                        </svg>
+                        <span>XEM ƯU ĐÃI (-35%)</span>
+                    </a>
+                </div>
+
+                <!-- Thống kê nổi bật (Features/Stats) -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Chính Hãng</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">30 Ngày</span>
+                        <span class="stat-label">Đổi Hàng Dễ Dàng</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">2 Giờ</span>
+                        <span class="stat-label">Giao Siêu Tốc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cột phải: Hình ảnh & Thẻ Showcase giày bóng đá -->
+            <div class="hero-visual">
+                <div class="shoe-card">
+                    <!-- Ánh sáng neon bao quanh giày -->
+                    <div class="shoe-glow"></div>
+                    
+                    <!-- Nhãn nổi bật Sale -->
+                    <div class="floating-badge badge--discount">
+                        <span class="badge-icon">⚡</span>
+                        <span class="badge-text">GIẢM 35%</span>
+                    </div>
+
+                    <!-- Hình ảnh giày bóng đá (Vector/Render chân thực với SVG & Gradient) -->
+                    <div class="shoe-image-wrapper">
+                        <img 
+                            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" 
+                            alt="Giày bóng đá thể thao cao cấp" 
+                            class="shoe-image"
+                        >
+                    </div>
+
+                    <!-- Thẻ nổi thông tin công nghệ -->
+                    <div class="floating-badge badge--tech">
+                        <div class="tech-icon-box">⚽</div>
+                        <div class="tech-info">
+                            <strong>Dynamic Fit Collar</strong>
+                            <small>Đế đinh ma sát kép</small>
+                        </div>
+                    </div>
+
+                    <!-- Thông tin tóm tắt sản phẩm -->
+                    <div class="shoe-details-card">
+                        <div class="shoe-info-header">
+                            <span class="shoe-category">SÂN CỎ NHÂN TẠO (TF)</span>
+                            <div class="rating">
+                                <span>★★★★★</span>
+                                <span class="rating-count">(4.9/5)</span>
+                            </div>
+                        </div>
+                        <h3 class="shoe-name">Phantom Luna Elite Pro TF</h3>
+                        <div class="shoe-pricing">
+                            <span class="current-price">2.450.000₫</span>
+                            <span class="old-price">3.800.000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script nhỏ cho tính năng mở menu mobile nếu cần -->
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        if (mobileToggle && mainNav) {
+            mobileToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('is-open');
+                mobileToggle.classList.toggle('is-active');
+            });
+        }
+    </script>
+</body>
+</html>
