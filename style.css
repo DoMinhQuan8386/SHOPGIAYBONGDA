@@ -435,3 +435,454 @@ body {
         width: 100%;
     }
 }
+/* ==========================================================================
+   1. CSS VARIABLES & DESIGN TOKENS
+   Hệ màu đồng bộ: Dark Slate & Emerald Grass Green
+   ========================================================================== */
+:root {
+  --bg-page: #0f172a;           /* Nền trang chính: Slate 900 */
+  --card-bg: #1e293b;           /* Nền thẻ sản phẩm: Slate 800 */
+  --card-bg-hover: #243248;     /* Nền thẻ khi hover */
+  --card-border: #334155;       /* Viền thẻ mặc định: Slate 700 */
+  --primary-accent: #10b981;    /* Màu nhấn: Emerald / Xanh cỏ sân bóng */
+  --primary-accent-glow: rgba(16, 185, 129, 0.28);
+  
+  --badge-discount: #ef4444;    /* Nhãn giảm giá đỏ rực */
+  --badge-discount-glow: rgba(239, 68, 68, 0.35);
+  --rating-star: #fbbf24;       /* Màu sao đánh giá Amber */
+  
+  --text-main: #f8fafc;         /* Chữ chính: Slate 50 */
+  --text-muted: #94a3b8;        /* Chữ phụ: Slate 400 */
+  --text-dim: #64748b;          /* Chữ mờ, giá cũ: Slate 500 */
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --transition-smooth: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Reset CSS */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 40px 16px 80px;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. SECTION CONTAINER & HEADER
+   ========================================================================== */
+.football-products-section {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+  gap: 16px;
+}
+
+.section-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--primary-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 620px;
+}
+
+/* ==========================================================================
+   3. FILTER TABS (BỘ NÚT TAB LỌC NHANH)
+   ========================================================================== */
+.filter-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-tabs {
+  display: inline-flex;
+  background-color: var(--card-bg);
+  padding: 6px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--card-border);
+  gap: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+}
+
+.tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tab-btn.active {
+  background-color: var(--primary-accent);
+  color: #042f22;
+  font-weight: 700;
+  box-shadow: 0 4px 14px var(--primary-accent-glow);
+}
+
+/* ==========================================================================
+   4. CSS GRID (3 CỘT PC / 2 CỘT TABLET / 1 CỘT MOBILE)
+   ========================================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 Cột trên PC */
+  gap: 28px;
+  margin-top: 36px;
+}
+
+/* Tablet: 2 cột */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+}
+
+/* Mobile: 1 cột */
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .filter-tabs {
+    border-radius: var(--radius-md);
+  }
+  .tab-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================================================
+   5. THẺ SẢN PHẨM & HIỆU ỨNG HOVER
+   ========================================================================== */
+.product-card {
+  background-color: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition-smooth);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover: Nâng nhẹ thẻ (translateY) & viền sáng màu xanh cỏ */
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-accent);
+  background-color: var(--card-bg-hover);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5),
+              0 0 25px -4px var(--primary-accent-glow);
+}
+
+/* Khu vực hiển thị ảnh giày */
+.card-thumb-wrapper {
+  position: relative;
+  background: radial-gradient(circle at center, #2d3d54 0%, #1e293b 75%);
+  padding: 24px 18px 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hào quang phía sau sản phẩm */
+.card-thumb-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+  top: -20%;
+  left: -20%;
+  pointer-events: none;
+  transition: var(--transition-smooth);
+}
+
+.product-card:hover .card-thumb-wrapper::before {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+}
+
+/* Ảnh giày & hiệu ứng xoay nhẹ khi hover */
+.shoe-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.45));
+  transition: var(--transition-smooth);
+  transform: rotate(-12deg);
+  user-select: none;
+}
+
+.product-card:hover .shoe-img {
+  transform: rotate(-16deg) scale(1.08) translateY(-4px);
+  filter: drop-shadow(0 22px 25px rgba(0, 0, 0, 0.6));
+}
+
+/* Vị trí huy hiệu góc trên */
+.badge-top-left {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+}
+
+.badge-top-right {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+}
+
+/* Huy hiệu loại đinh sân (TF, FG, IC) */
+.badge-stud {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.badge-stud.tf {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+}
+
+.badge-stud.fg {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+}
+
+.badge-stud.ic {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+}
+
+/* Nhãn giảm giá đỏ (-20%) */
+.badge-discount {
+  background-color: var(--badge-discount);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px var(--badge-discount-glow);
+  display: inline-flex;
+  align-items: center;
+  animation: pulse-discount 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-discount {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ==========================================================================
+   6. CHI TIẾT NỘI DUNG THẺ (CARD BODY)
+   ========================================================================== */
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 12px;
+}
+
+.brand-and-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.brand-name {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.star-icons {
+  display: flex;
+  gap: 2px;
+  color: var(--rating-star);
+}
+
+.star-icons svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.review-count {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.shoe-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8em;
+  transition: var(--transition-smooth);
+}
+
+.shoe-title:hover {
+  color: var(--primary-accent);
+}
+
+/* Khối giá: Giá bán & Giá gốc gạch ngang */
+.price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.price-sale {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary-accent);
+  letter-spacing: -0.3px;
+}
+
+.price-original {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+/* Nút Thêm vào giỏ hàng */
+.add-to-cart-btn {
+  margin-top: auto;
+  width: 100%;
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--primary-accent);
+  border: 1.5px solid rgba(16, 185, 129, 0.4);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: var(--transition-smooth);
+}
+
+.add-to-cart-btn svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  transition: transform 0.25s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: var(--primary-accent);
+  color: #022c22;
+  border-color: var(--primary-accent);
+  box-shadow: 0 6px 18px var(--primary-accent-glow);
+  transform: translateY(-2px);
+}
+
+.add-to-cart-btn:hover svg {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(0);
+}
