@@ -309,7 +309,7 @@ button {
 }
 
 .hero-tag,
-.section-badge-tag {
+.football-products-section .section-badge-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -369,7 +369,8 @@ button {
   margin-bottom: 38px;
 }
 
-.btn {
+.hero .btn,
+.about-section .btn {
   min-height: 48px;
   padding: 12px 22px;
   display: inline-flex;
@@ -385,28 +386,36 @@ button {
   transition: var(--ease);
 }
 
-.btn-primary,
-.btn--primary {
+.hero .btn-primary,
+.hero .btn--primary,
+.about-section .btn-primary,
+.about-section .btn--primary {
   color: #06120b;
   background: linear-gradient(135deg, var(--green), var(--green-2));
   box-shadow: 0 10px 30px rgba(25,245,138,.16);
 }
 
-.btn-primary:hover,
-.btn--primary:hover {
+.hero .btn-primary:hover,
+.hero .btn--primary:hover,
+.about-section .btn-primary:hover,
+.about-section .btn--primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(25,245,138,.28);
 }
 
-.btn-secondary,
-.btn--outline {
+.hero .btn-secondary,
+.hero .btn--outline,
+.about-section .btn-secondary,
+.about-section .btn--outline {
   color: #fff;
   background: rgba(255,255,255,.045);
   border-color: var(--border);
 }
 
-.btn-secondary:hover,
-.btn--outline:hover {
+.hero .btn-secondary:hover,
+.hero .btn--outline:hover,
+.about-section .btn-secondary:hover,
+.about-section .btn--outline:hover {
   transform: translateY(-3px);
   border-color: var(--border-green);
   background: rgba(255,255,255,.08);
@@ -788,7 +797,7 @@ button {
   margin-right: auto;
 }
 
-.section-header {
+.football-products-section .section-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -797,13 +806,13 @@ button {
   text-align: center;
 }
 
-.section-badge-tag {
+.football-products-section .section-badge-tag {
   padding: 6px 16px;
   font-size: .72rem;
   letter-spacing: 1px;
 }
 
-.section-title {
+.football-products-section .section-title {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -815,13 +824,13 @@ button {
   text-transform: uppercase;
 }
 
-.section-subtitle {
+.football-products-section .section-subtitle {
   max-width: 620px;
   color: var(--muted);
   font-size: .9rem;
 }
 
-.filter-tabs-wrapper {
+.football-products-section .filter-tabs-wrapper {
   width: 100%;
   margin-top: 10px;
   padding-bottom: 8px;
@@ -830,7 +839,7 @@ button {
   overflow-x: auto;
 }
 
-.filter-tabs {
+.football-products-section .filter-tabs {
   display: inline-flex;
   gap: 6px;
   padding: 6px;
@@ -842,7 +851,7 @@ button {
   -webkit-backdrop-filter: blur(12px);
 }
 
-.tab-btn {
+.football-products-section .tab-btn {
   padding: 10px 20px;
   border: 0;
   outline: 0;
@@ -855,18 +864,18 @@ button {
   transition: var(--ease);
 }
 
-.tab-btn:hover {
+.football-products-section .tab-btn:hover {
   color: #fff;
   background: rgba(255,255,255,.06);
 }
 
-.tab-btn.active {
+.football-products-section .tab-btn.active {
   color: #06120b;
   background: var(--green);
   box-shadow: 0 4px 16px rgba(25,245,138,.22);
 }
 
-.product-grid {
+.football-products-section .product-grid {
   margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -1121,7 +1130,9 @@ button {
    CHUNG
    ========================= */
 
-section {
+.hero,
+.about-section,
+.football-products-section {
   scroll-margin-top: 85px;
 }
 
@@ -1151,7 +1162,7 @@ section {
     gap: 40px;
   }
 
-  .product-grid {
+  .football-products-section .product-grid {
     grid-template-columns: repeat(2,1fr);
     gap: 22px;
   }
@@ -1341,16 +1352,16 @@ section {
     bottom: 18px;
   }
 
-  .product-grid {
+  .football-products-section .product-grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .filter-tabs {
+  .football-products-section .filter-tabs {
     border-radius: 14px;
   }
 
-  .tab-btn {
+  .football-products-section .tab-btn {
     padding: 8px 14px;
     font-size: .74rem;
   }
@@ -1405,7 +1416,7 @@ section {
     padding: 13px;
   }
 
-  .section-title {
+  .football-products-section .section-title {
     font-size: 2.25rem;
   }
 
@@ -1432,3 +1443,30 @@ section {
   }
 }
 s
+
+/* ===== POLISH / CONFLICT SAFETY ===== */
+.hero a,
+.about-section a,
+.football-products-section a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero .btn:focus-visible,
+.about-section .btn:focus-visible,
+.football-products-section .tab-btn:focus-visible,
+.football-products-section .add-to-cart-btn:focus-visible,
+.menu-toggle:focus-visible,
+.cart:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+@media (max-width: 992px) {
+  .header-container { min-height: 70px; }
+  .main-nav { top: 70px; }
+}
+
+@media (max-width: 768px) {
+  .header-container { min-height: 68px; }
+}
